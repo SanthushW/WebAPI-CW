@@ -1,15 +1,11 @@
 const mongoose = require('mongoose');
-const { v4: uuidv4 } = require('uuid');
+const { Schema } = mongoose;
 
-const trainSchema = new mongoose.Schema({
-    location_id: {
-        type: String,
-        default: uuidv4,
-        unique: true,
-    },
+// Define the schema for IOT data
+const IOtDataSchema = new Schema({
     train_id: {
         type: String,
-        required: true,
+        required: true
     },
     train_name: {
         type: String,
@@ -17,11 +13,11 @@ const trainSchema = new mongoose.Schema({
     },
     latitude: {
         type: Number,
-        required: true,
+        required: true
     },
     longitude: {
         type: Number,
-        required: true,
+        required: true
     },
     timestamp: {
         type: Date,
@@ -30,7 +26,7 @@ const trainSchema = new mongoose.Schema({
     },
     speed: {
         type: Number,
-        required: true,
+        required: true
     },
     signal_strength: {
         type: Number,
@@ -40,6 +36,7 @@ const trainSchema = new mongoose.Schema({
     }
 });
 
-const Train = mongoose.model('Train', trainSchema);
+// Create the model from the schema
+const IOTData = mongoose.model('IOTData', IOtDataSchema);
 
-module.exports = Train;
+module.exports = IOTData;
