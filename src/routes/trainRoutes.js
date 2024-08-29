@@ -7,9 +7,12 @@ const {
     addTrainLocations,
     getJourneyTime,
     getTrainHistory
-} = require('../controllers/trainController');
+} = require('../controllers/TrainController');
 
-
+const {
+    addMail,
+    getMailAndTrainDetails,
+} = require('../controllers/mailController');
 
 // GET all trains
 router.get('/trains', getAllTrains);
@@ -27,11 +30,8 @@ router.get('/journey-time', getJourneyTime);
 // GET historical location data for a specific train
 router.get('/:train_id/history', getTrainHistory);
 
+// mail routes
+router.post('/mails', addMail);
+router.get('/mails/:mail_id', getMailAndTrainDetails);
+
 module.exports = router;
-// In trainRoutes.js
-console.log(getAllTrains);
-console.log(getTrainById);
-console.log(getTrainLocations);
-console.log(addTrainLocations);
-console.log(getJourneyTime);
-console.log(getTrainHistory);
